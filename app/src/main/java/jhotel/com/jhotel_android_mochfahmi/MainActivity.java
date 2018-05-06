@@ -1,10 +1,10 @@
 package jhotel.com.jhotel_android_mochfahmi;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -17,7 +17,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
@@ -37,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent test=getIntent();
-        Bundle bundle=test.getExtras();
-        currentUserId=(int) bundle.get("id");
+        currentUserId=test.getIntExtra("id",0);
         expListView = (ExpandableListView) findViewById(R.id.expanded_menu);
+        Button pesananButton=(Button) findViewById(R.id.pesanan);
 
         refreshList();
 
@@ -56,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("tarif",Rselected.getDailyTariff());
                 MainActivity.this.startActivity(intent);
                 return false;
+            }
+        });
+
+        pesananButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, SelesaiPesananActivity.class);
+                intent.putExtra("customer_id", currentUserId);
+                MainActivity.this.startActivity(intent);
+
             }
         });
 

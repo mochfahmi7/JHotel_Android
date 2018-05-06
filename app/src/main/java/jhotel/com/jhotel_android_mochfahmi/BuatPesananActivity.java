@@ -1,5 +1,6 @@
 package jhotel.com.jhotel_android_mochfahmi;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -78,13 +79,21 @@ public class BuatPesananActivity extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             if (jsonResponse != null) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(BuatPesananActivity.this);
-
-                                builder.setMessage("Pesanan Success").create().show();
+                                builder.setMessage("Pesanan Sukses")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Intent intent = new Intent(BuatPesananActivity.this, MainActivity.class);
+                                                BuatPesananActivity.this.startActivity(intent);
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
 
                             }
                         } catch (JSONException e) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(BuatPesananActivity.this);
-                            builder.setMessage("Pesanan Failed.").create().show();
+                            builder.setMessage("Pesanan Gagal").create().show();
                         }
                     }
                 };
