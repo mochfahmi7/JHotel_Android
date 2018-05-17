@@ -6,7 +6,10 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Class ini merupakan class RegisterRequest, yaitu untuk mengatur koneksi server dan client pada bagian registrasi user.
+ * version 15/05/2018
+ */
 public class RegisterRequest extends StringRequest {
     private static final String Regis_URL = "http://192.168.43.3:8080/newcustomer";
     private Map<String, String> params;

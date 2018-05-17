@@ -1,12 +1,20 @@
 package jhotel.com.jhotel_android_mochfahmi;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.SearchView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,12 +25,21 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Class ini merupakan class MainActivity, yaitu class untuk mengatur sisi client bagian main yang lebih mengatur tampilan expandable list hotel.
+ * version 15/05/2018
+ */
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, SearchView.OnCloseListener {
 
-    int currentUserId,roomNumber;
+    int currentUserId;
+    private SearchView search;
+    MenuListAdapter menuListAdapter;
+
     private ArrayList<Hotel> listHotel = new ArrayList<>();
     private ArrayList<Room> listRoom = new ArrayList<>();
     private HashMap<Hotel, ArrayList<Room>> childMapping = new HashMap<>();
@@ -31,40 +48,35 @@ public class MainActivity extends AppCompatActivity {
     HashMap<String, Hotel> hotelHashMap = new HashMap<>();
     HashMap<String, ArrayList<Room>> roomsMap = new HashMap<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_main);
-        Intent test=getIntent();
-        currentUserId=test.getIntExtra("id",0);
+        Intent test = getIntent();
+        currentUserId = test.getIntExtra("id", 0);
         expListView = (ExpandableListView) findViewById(R.id.expanded_menu);
-        Button pesananButton=(Button) findViewById(R.id.pesanan);
 
+        search = (SearchView) findViewById(R.id.search_view);
         refreshList();
-
+        search.setOnQueryTextListener(MainActivity.this);
+        menuListAdapter = new MenuListAdapter(this, listHotel, childMapping);
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
+                                        int childPosition, long id) {
                 Room Rselected = childMapping.get(listHotel.get(groupPosition)).get(childPosition);
-                Hotel Hselected= listHotel.get(groupPosition);
-                Intent intent=new Intent(MainActivity.this, BuatPesananActivity.class);
+                Hotel Hselected = listHotel.get(groupPosition);
+                Intent intent = new Intent(MainActivity.this, BuatPesananActivity.class);
                 intent.putExtra("customer_id", currentUserId);
-                intent.putExtra("roomNumber",Rselected.getRoomNumber());
-                intent.putExtra("idhotel",Hselected.getID());
-                intent.putExtra("tarif",Rselected.getDailyTariff());
+                intent.putExtra("roomNumber", Rselected.getRoomNumber());
+                intent.putExtra("idhotel", Hselected.getID());
+                intent.putExtra("tarif", Rselected.getDailyTariff());
                 MainActivity.this.startActivity(intent);
                 return false;
-            }
-        });
-
-        pesananButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, SelesaiPesananActivity.class);
-                intent.putExtra("customer_id", currentUserId);
-                MainActivity.this.startActivity(intent);
-
             }
         });
 
@@ -117,5 +129,23 @@ public class MainActivity extends AppCompatActivity {
         queue.add(menuRequest);
     }
 
+    @Override
+    public boolean onClose() {
+        menuListAdapter.getFilter().filter("");
+        menuListAdapter.notifyDataSetChanged();
+        return false;
+    }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        menuListAdapter.getFilter().filter(newText);
+        menuListAdapter.notifyDataSetChanged();
+        return false;
+    }
 }

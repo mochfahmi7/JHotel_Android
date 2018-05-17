@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">JHotel_Android_MochFahmi</string>
+    <string name="app_name">JHotel</string>
+    <string name="tes">"\u00a9 Mochamad Fahmi Fajrin"</string>
+    <string name="toolbar_sign_out">Log Out</string>
+    <string name="about">About</string>
+    <string-array name="hotel_arry">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+    </string-array>
+    <string name="aboutdesk">Aplikasi ini merupakan aplikasi booking hotel berbasis android. Aplikasi dikerjakan oleh Mochamad Fahmi Fajrin. Ada beberapa fitur, yaitu perbaikan GUI, eror handling, priview hotel dan yang lainnya. </string>
 </resources>

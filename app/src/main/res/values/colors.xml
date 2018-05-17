@@ -3,5 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="biru">#1888ff</color>
+    <color name="biru">#2d4f6b</color>
+    <color name="putih">#fbfbfc</color>
+    <color name="dasar">#49bdf7</color>
+    <color name="dasar2">#26aef2</color>
+    <color name="abu">#b1b3b4</color>
+
+
 </resources>

@@ -5,7 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SelesaiPesananActivity"
+    android:background="@color/dasar"
     android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/etusername"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail Pesanan"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
 
     <LinearLayout
         android:id="@+id/layoutdetailpesanan"
@@ -15,12 +33,6 @@
         android:orientation="vertical"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Detail Pesanan"
-            android:textSize="25dp"/>
 
         <TableRow
             android:layout_marginTop="20dp"
@@ -29,17 +41,20 @@
             android:weightSum="2">
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/staticIDPesanan"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="ID Pesanan"/>
             <TextView
+                android:textColor="@color/putih"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":"/>
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/id_pesanan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -51,20 +66,24 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:background="@color/dasar2">
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/staticBiaya"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Biaya"/>
             <TextView
+                android:textColor="@color/putih"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":"/>
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/biaya"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -79,17 +98,20 @@
             android:weightSum="2">
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/staticJmlHari"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Jumlah Hari"/>
             <TextView
+                android:textColor="@color/putih"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":"/>
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/jmlHari"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -101,20 +123,24 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:background="@color/dasar2">
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/staticTanggalPesan"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Tanggal Pesan"/>
             <TextView
+                android:textColor="@color/putih"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":"/>
 
             <TextView
+                android:textColor="@color/putih"
                 android:id="@+id/tanggalpesan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -135,7 +161,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:text="BATAL"
-            android:textColor="#000000"
+            android:background="@color/dasar2"
+            android:textColor="@color/putih"
             android:textStyle="bold" />
 
         <Button
@@ -145,7 +172,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="SELESAI"
-            android:textColor="#000000"
+            android:background="@color/dasar2"
+            android:textColor="@color/putih"
             android:textStyle="bold" />
 
     </LinearLayout>

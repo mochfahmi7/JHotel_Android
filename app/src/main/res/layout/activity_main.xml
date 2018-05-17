@@ -2,32 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#f4f4f4" >
+    android:background="@color/dasar"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/pesanan"
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo" />
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="PESANAN"
-        android:textColor="#000000"
+        android:text="Booking Hotel"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dasar2"
+        android:iconifiedByDefault="false"
+        android:padding="2dp"
+        android:queryHint="Cari disini...."/>
+
     <View
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#bbb"/>
+        android:layout_marginTop="20dp"
+        android:background="#bbb" />
 
     <ExpandableListView
-        android:layout_marginTop="10dp"
         android:id="@+id/expanded_menu"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:divider="#050505"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:childDivider="#363636"
-        android:dividerHeight="0.4dp"/>
+        android:divider="#050505"
+        android:dividerHeight="0.4dp" />
 
 </LinearLayout>

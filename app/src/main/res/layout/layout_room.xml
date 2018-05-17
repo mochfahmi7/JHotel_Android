@@ -11,5 +11,13 @@
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:textColor="@color/putih"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fdfdfd"/>
+
 </LinearLayout>

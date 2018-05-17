@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dasar"
+    tools:context=".HotelBActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carouselView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:fillColor="#FFFFFFFF"
+            app:pageColor="#00000000"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="BOROBUDUR"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="#252525" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/staticNama"
+                android:layout_width="0dp"
+                android:textSize="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nama Hotel"
+                android:textColor="@color/putih" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textSize="15dp"
+                android:textColor="@color/putih" />
+
+            <TextView
+                android:id="@+id/nama"
+                android:textSize="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="  TextView"
+                android:textColor="@color/putih" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/dasar2"
+            android:weightSum="2">
+
+            <TextView
+                android:textSize="15dp"
+                android:id="@+id/staticBintang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bintang"
+                android:textColor="@color/putih" />
+
+            <TextView
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textColor="@color/putih" />
+
+            <TextView
+                android:textSize="15dp"
+                android:id="@+id/bintang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="  TextView"
+                android:textColor="@color/putih" />
+        </TableRow>
+
+        <TableRow
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
+            android:weightSum="2">
+
+            <TextView
+                android:textSize="15dp"
+                android:id="@+id/staticLokasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lokasi"
+                android:textColor="@color/putih" />
+
+            <TextView
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:textColor="@color/putih" />
+
+            <TextView
+                android:textSize="15dp"
+                android:id="@+id/lokasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="  TextView"
+                android:textColor="@color/putih" />
+        </TableRow>
+
+
+    </LinearLayout>
+</LinearLayout>

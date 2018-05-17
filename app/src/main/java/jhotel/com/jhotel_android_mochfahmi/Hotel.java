@@ -1,5 +1,9 @@
 package jhotel.com.jhotel_android_mochfahmi;
 
+/**
+ * Class ini merupakan class Hotel, yaitu class untuk mengatur sisi client bagian hotel.
+ * version 15/05/2018
+ */
 public class Hotel {
 
     private String nama;
@@ -7,16 +11,30 @@ public class Hotel {
     private int bintang;
     private int id;
 
+    /**
+     * Method ini merupakan method Hotel, yaitu merupakan Constructor.
+     *
+     * @param bintang
+     * @param id
+     * @param lokasi
+     * @param nama
+     */
     public Hotel(String nama, Lokasi lokasi, int bintang, int id) {
         this.nama = nama;//instance variable
         this.lokasi = lokasi;//instance variable
         this.bintang = bintang;//instance variable
-        this.id=id;
+        this.id = id;
     }
 
+    /**
+     * ini merupakan method getID, yang merupakan Accessor.
+     *
+     * @return id
+     */
     public int getID() {
         return id;
     }
+
     /**
      * ini merupakan method getBintang, yang merupakan Accessor.
      *
@@ -67,7 +85,9 @@ public class Hotel {
         this.bintang = bintang;
     }
 
-
+    /**
+     * ini merupakan method sertID, yang merupakan Mutator.
+     */
     public void setID(int id) {
         this.id = id;
     }

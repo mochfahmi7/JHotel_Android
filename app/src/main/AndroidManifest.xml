@@ -6,12 +6,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,13 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".BuatPesananActivity" />
-        <activity android:name=".SelesaiPesananActivity"></activity>
+        <activity android:name=".SelesaiPesananActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainMenuActivity" />
+        <activity android:name=".PriviewHotelActivity" />
+        <activity android:name=".HotelAActivity" />
+        <activity android:name=".HotelBActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

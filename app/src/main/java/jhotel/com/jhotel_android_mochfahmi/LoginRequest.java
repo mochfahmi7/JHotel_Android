@@ -6,7 +6,10 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Class ini merupakan class LoginRequest, yaitu untuk mengatur koneksi server dan client pada bagian login user.
+ * version 15/05/2018
+ */
 public class LoginRequest extends StringRequest {
     private static final String Login_URL = "http://192.168.43.3:8080/logincust";
     private Map<String, String> params;

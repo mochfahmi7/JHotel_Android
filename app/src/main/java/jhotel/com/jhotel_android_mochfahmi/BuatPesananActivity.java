@@ -2,6 +2,7 @@ package jhotel.com.jhotel_android_mochfahmi;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ import org.json.JSONObject;
 
 import java.util.Formatter;
 
+/**
+ * Class ini merupakan class BuatPesanan, yaitu class untuk mengatur sisi client bagian pembuatan pesanan.
+ * version 15/05/2018
+ */
 public class BuatPesananActivity extends AppCompatActivity {
 
     private int banyakHari;
@@ -30,20 +35,22 @@ public class BuatPesananActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_buat_pesanan);
 
-        Intent test=getIntent();
-        customer_id= test.getIntExtra("customer_id",0);
-        idHotel=test.getIntExtra("idhotel",0);
-        roomNumber=test.getStringExtra("roomNumber");
-        tarif=test.getDoubleExtra("tarif",0);
+        Intent test = getIntent();
+        customer_id = test.getIntExtra("customer_id", 0);
+        idHotel = test.getIntExtra("idhotel", 0);
+        roomNumber = test.getStringExtra("roomNumber");
+        tarif = test.getDoubleExtra("tarif", 0);
 
-        final Button hitung=(Button) findViewById(R.id.hitung);
-        final Button pesan=(Button) findViewById(R.id.pesan);
-        final TextView room_Number=(TextView) findViewById(R.id.room_number);
-        final TextView tariff=(TextView) findViewById(R.id.tariff);
-        final TextView total_biaya=(TextView) findViewById(R.id.total_biaya);
-        final EditText durasi_hari=(EditText) findViewById(R.id.durasi_hari);
+        final Button hitung = (Button) findViewById(R.id.hitung);
+        final Button pesan = (Button) findViewById(R.id.pesan);
+        final TextView room_Number = (TextView) findViewById(R.id.room_number);
+        final TextView tariff = (TextView) findViewById(R.id.tariff);
+        final TextView total_biaya = (TextView) findViewById(R.id.total_biaya);
+        final EditText durasi_hari = (EditText) findViewById(R.id.durasi_hari);
 
         pesan.setVisibility(View.GONE);
         hitung.setVisibility(View.VISIBLE);
@@ -54,8 +61,8 @@ public class BuatPesananActivity extends AppCompatActivity {
         hitung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                banyakHari=Integer.parseInt(durasi_hari.getText().toString());
-                double hitungtotal = tarif*banyakHari;
+                banyakHari = Integer.parseInt(durasi_hari.getText().toString());
+                double hitungtotal = tarif * banyakHari;
                 total_biaya.setText(getRupiahFormat(hitungtotal));
                 hitung.setVisibility(View.GONE);
                 pesan.setVisibility(View.VISIBLE);
@@ -64,10 +71,10 @@ public class BuatPesananActivity extends AppCompatActivity {
 
         pesan.setOnClickListener(new View.OnClickListener() {
 
-            final String  jumlah_hari= banyakHari+"";
+            final String jumlah_hari = banyakHari + "";
             final String nomor_kamar = room_Number.getText().toString();
-            final String id_customer= customer_id+"";
-            final String id_hotel= idHotel+"";
+            final String id_customer = customer_id + "";
+            final String id_hotel = idHotel + "";
 
             @Override
             public void onClick(View v) {
@@ -83,7 +90,7 @@ public class BuatPesananActivity extends AppCompatActivity {
                                         .setCancelable(false)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
-                                                Intent intent = new Intent(BuatPesananActivity.this, MainActivity.class);
+                                                Intent intent = new Intent(BuatPesananActivity.this, MainMenuActivity.class);
                                                 BuatPesananActivity.this.startActivity(intent);
                                             }
                                         });
@@ -98,8 +105,8 @@ public class BuatPesananActivity extends AppCompatActivity {
                     }
                 };
 
-                BuatPesananRequest buatPesananRequest= new BuatPesananRequest(banyakHari+"",id_customer,id_hotel,nomor_kamar,responseListener);
-                RequestQueue queue= Volley.newRequestQueue(BuatPesananActivity.this);
+                BuatPesananRequest buatPesananRequest = new BuatPesananRequest(banyakHari + "", id_customer, id_hotel, nomor_kamar, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(BuatPesananActivity.this);
                 queue.add(buatPesananRequest);
 //
             }
@@ -107,15 +114,15 @@ public class BuatPesananActivity extends AppCompatActivity {
     }
 
 
-    public String getRupiahFormat(Double input){
+    public String getRupiahFormat(Double input) {
         float epsilon = 0.004f; // 4 tenths of a cent
         String rupiah = "";
         if (Math.abs(Math.round(input) - input) < epsilon) {
             rupiah = String.format("%10.0f", input); // sdb
         } else {
-            rupiah =  String.format("%10.2f", input); // dj_segfault
+            rupiah = String.format("%10.2f", input); // dj_segfault
         }
-        return "Rp "+rupiah;
+        return "Rp " + rupiah;
 
     }
 

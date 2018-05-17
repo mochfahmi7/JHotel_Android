@@ -1,6 +1,9 @@
 package jhotel.com.jhotel_android_mochfahmi;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +21,19 @@ import org.json.JSONObject;
 
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
+
+/**
+ * Class ini merupakan class RegisterActivity, yaitu class untuk mengatur sisi client bagian register user.
+ * version 15/05/2018
+ */
 public class RegisterActivity extends AppCompatActivity {
     ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_register);
 
         dialog = new ProgressDialog(this);
@@ -34,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         regisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.setMessage("Loading...");
+                dialog.setTitle("Tunggu Sebentar");
                 dialog.show();
                 final String email = emailIn.getText().toString();
                 final String password = passIn.getText().toString();
@@ -44,11 +57,21 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         dialog.dismiss();
                         try {
-                            Log.i("Response register ",response);
+                            Log.i("Response register ", response);
                             JSONObject jsonResponse = new JSONObject(response);
                             if (jsonResponse != null) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("Registration Success").create().show();
+                                builder.setMessage("Registration Succes")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                RegisterActivity.this.startActivity(intent);
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
                             }
                         } catch (JSONException e) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);

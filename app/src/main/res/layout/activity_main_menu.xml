@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dasar"
+    tools:context=".MainMenuActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_above="@+id/etusername"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logo" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Main Menu"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:weightSum="2">
+
+            <ImageButton
+                android:id="@+id/booking"
+                android:layout_weight="1"
+                android:src="@drawable/hotel" />
+
+            <ImageButton
+                android:id="@+id/listorder"
+                android:layout_weight="1"
+                android:src="@drawable/pesanan" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="     BOOKING HOTEL"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="        LIST ORDER"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:weightSum="2">
+
+            <ImageButton
+                android:id="@+id/testimoni"
+                android:layout_weight="1"
+                android:src="@drawable/customer" />
+
+            <ImageButton
+                android:id="@+id/kontak"
+                android:layout_weight="1"
+                android:src="@drawable/kontak" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="          LIST HOTEL"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="       CONTACT US"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="@string/tes"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

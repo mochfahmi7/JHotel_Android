@@ -2,6 +2,7 @@ package jhotel.com.jhotel_android_mochfahmi;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,14 +15,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 import static com.android.volley.toolbox.Volley.newRequestQueue;
 
+/**
+ * Class ini merupakan class SelesaiPesananActivity, yaitu untuk mengatur sisi client pada bagian detail pesanan/pesanan selesai.
+ * version 15/05/2018
+ */
 public class SelesaiPesananActivity extends AppCompatActivity {
     int customer_id;
     TextView id_pesanan;
@@ -37,6 +39,8 @@ public class SelesaiPesananActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_selesai_pesanan);
         id_pesanan = (TextView) findViewById(R.id.id_pesanan);
         biaya = (TextView) findViewById(R.id.biaya);
@@ -61,9 +65,18 @@ public class SelesaiPesananActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             if (jsonResponse != null) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(SelesaiPesananActivity.this);
 
-                                builder.setMessage("Pesanan Berhasil Diselesaikan").create().show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SelesaiPesananActivity.this);
+                                builder.setMessage("Pesanan Berhasil Diselesaikan")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Intent intent = new Intent(SelesaiPesananActivity.this, MainMenuActivity.class);
+                                                SelesaiPesananActivity.this.startActivity(intent);
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
 
                             }
                         } catch (JSONException e) {
@@ -90,9 +103,16 @@ public class SelesaiPesananActivity extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             if (jsonResponse != null) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SelesaiPesananActivity.this);
-
-                                builder.setMessage("Pesanan Berhasil Dibatalkan").create().show();
-
+                                builder.setMessage("Pesanan Berhasil Dibatalkan")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Intent intent = new Intent(SelesaiPesananActivity.this, MainMenuActivity.class);
+                                                SelesaiPesananActivity.this.startActivity(intent);
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
                             }
                         } catch (JSONException e) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(SelesaiPesananActivity.this);
@@ -113,13 +133,13 @@ public class SelesaiPesananActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    if (response.equals("")){
+                    if (response.equals("")) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SelesaiPesananActivity.this);
                         builder.setMessage("Pesanan Tidak Ditemukan!")
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        Intent intent = new Intent(SelesaiPesananActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(SelesaiPesananActivity.this, MainMenuActivity.class);
                                         intent.putExtra("id", customer_id);
                                         SelesaiPesananActivity.this.startActivity(intent);
 
@@ -127,7 +147,7 @@ public class SelesaiPesananActivity extends AppCompatActivity {
                                 });
                         AlertDialog alert = builder.create();
                         alert.show();
-                    }else {
+                    } else {
                         JSONObject jsonResponse = new JSONObject(response);
                         if (jsonResponse != null) {
                             linearLayout.setVisibility(View.VISIBLE);

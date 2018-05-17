@@ -1,18 +1,28 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
     repositories {
+        mavenCentral()
         google()
-        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
-        
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+
     }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'gs-spring-boot'
+    version = '0.1.0'
 }
 
 allprojects {
@@ -22,6 +32,23 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+
+repositories {
+    mavenCentral()
+    google()
 }
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'postgresql:postgresql:9.1-901-1.jdbc4'
+    testCompile("junit:junit")
+
+}
+
+
+
+
